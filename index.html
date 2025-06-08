@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Video Iframe Generator - Convert Video URLs to Embed Codes</title>
-    <meta name="description" content="Convert any video URL into embeddable iframe code. Supports direct video files and multiple platforms with live preview functionality. GitHub Pages compatible.">
-    <meta property="og:title" content="Video Iframe Generator - Convert Video URLs to Embed Codes">
-    <meta property="og:description" content="Convert any video URL into embeddable iframe code. Supports direct video files and multiple platforms with live preview functionality.">
-    <meta property="og:type" content="website">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Video Embed Generator</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    input, button { padding: 10px; width: 80%; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Video Embed Generator</h1>
+  <input type="text" id="videoURL" placeholder="ضع رابط الفيديو هنا" />
+  <button onclick="generate()">أنشئ رابط التضمين</button>
+  <p id="result"></p>
+
+  <script>
+    function generate() {
+      const url = document.getElementById('videoURL').value.trim();
+      if (!url) return alert("يرجى إدخال رابط");
+
+      const encoded = encodeURIComponent(url);
+      const link = `${location.origin}${location.pathname.replace('index.html', '')}embed.html?url=${encoded}`;
+
+      document.getElementById('result').innerHTML = `
+        <p>الرابط الناتج:</p>
+        <a href="${link}" target="_blank">${link}</a>
+      `;
+    }
+  </script>
+</body>
 </html>
