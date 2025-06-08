@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Embedded Video</title>
+  <style>
+    body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    iframe { width: 80%; height: 80%; border: none; }
+  </style>
+</head>
+<body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get('url');
+
+    if (url) {
+      document.write(`<iframe src="${url}" allowfullscreen></iframe>`);
+    } else {
+      document.body.innerHTML = "<h2>لا يوجد رابط فيديو!</h2>";
+    }
+  </script>
+</body>
+</html>
